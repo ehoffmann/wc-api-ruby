@@ -52,7 +52,7 @@ module WooCommerce
     #
     # Returns the request Hash.
     def post endpoint, data
-      do_request :post, endpoint, data
+      do_request :post, endpoint, data, read_timeout: 180
     end
 
     # Public: PUT requests.
@@ -122,7 +122,7 @@ module WooCommerce
     # data     - The Hash data for the request.
     #
     # Returns the response in JSON String.
-    def do_request method, endpoint, data = {}
+    def do_request method, endpoint, data = {}, base_options = {}
       url = get_url(endpoint, method)
       options = {
         format: :json
@@ -130,6 +130,7 @@ module WooCommerce
 
       # Allow custom HTTParty args.
       options = options.merge(@httparty_args)
+      options = options.merge(base_options)
 
       # Set headers.
       options[:headers] = {
