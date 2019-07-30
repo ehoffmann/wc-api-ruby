@@ -23,5 +23,8 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = %w[README.md LICENSE]
 
   s.add_runtime_dependency "httparty", "~> 0.14", ">= 0.14.0"
-  s.add_runtime_dependency "json", "~> 2.0", ">= 2.0.0"
+  s.add_runtime_dependency "json", ">= 1.8"
+  s.add_development_dependency "minitest"
+  s.add_development_dependency "fakeweb"
+  s.add_development_dependency "rake"
 end
